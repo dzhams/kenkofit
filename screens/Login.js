@@ -1,12 +1,11 @@
-import { View, Text, Image, Pressable, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Image, Pressable, TextInput, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from '../colors/colors';
 import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
-import Checkbox from "expo-checkbox"
+import Checkbox from "expo-checkbox";
 import axios from 'axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 const Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -18,43 +17,36 @@ const Login = ({ navigation }) => {
         const checkLoginStatus = async () => {
             try {
                 const token = await AsyncStorage.getItem('authToken');
-
                 if (token) {
-                    setTimeout(() => {
-                        navigation.replace("myTabs", { screen: "Activity" });
-                    }, 400);
+                    navigation.replace("myTabs", { screen: "Activity" });
                 }
             } catch (error) {
                 console.log("error", error);
             }
         };
-
         checkLoginStatus();
-    }, []);
+    }, [navigation]);
 
     const handleLogin = async () => {
         if (!email.trim()) {
             Alert.alert('E-Mail address is required.');
             return;
-
         }
-        try {
-            const user = {
-                email: email,
-                password: password
-            }
 
-            const response = await axios.post('http://192.168.0.16:3000/login', user);
+        try {
+            const user = { email, password };
+            const response = await axios.post('http://192.168.0.10:3000/login', user);
             const token = response.data.token;
 
-            // Speichere den Token im AsyncStorage
-            await AsyncStorage.setItem('authToken', token);
-
-            // Navigiere zum ActivityScreen
-            navigation.replace("myTabs", { screen: "Activity" });
+            if (token) {
+                await AsyncStorage.setItem('authToken', token); // Speichere den Token
+                navigation.replace("myTabs", { screen: "Activity" }); // Navigiere zum ActivityScreen
+            } else {
+                Alert.alert("Login fehlgeschlagen", "Ungültige Anmeldeinformationen");
+            }
         } catch (error) {
             console.log("error", error);
-            Alert.alert("Fehler beim Einloggen");
+            Alert.alert("Fehler beim Einloggen", "Überprüfen Sie Ihre Anmeldeinformationen und versuchen Sie es erneut.");
         }
     };
 
@@ -62,9 +54,9 @@ const Login = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
             <View style={{ flex: 1, marginHorizontal: 22 }}>
                 <View style={{ marginVertical: 22 }}>
-                    <AntDesign onPress={() => navigation.goBack()} name="back" size={24} color="black" />
+                    <AntDesign onPress={() => navigation.goBack()} name="back" size={26} color="black" />
                     <Text style={{
-                        fontSize: 26,
+                        fontSize: 30,
                         fontFamily: "Rajdhani-Bold",
                         marginVertical: 30,
                         color: COLORS.black

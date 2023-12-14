@@ -142,88 +142,111 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/save-workout', async (req, res) => {
+// Füge diese Route am Anfang deines Servercodes hinzu
+app.get('/get-todays-workout', async (req, res) => {
     try {
-        const { workout, minutes, calories } = req.body;
         const currentDate = new Date();
-
-        // Suchen nach vorhandenen Daten für den aktuellen Tag
-        let existingWorkout = await Workout.findOne({
+        const workout = await Workout.findOne({
             date: {
                 $gte: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
                 $lt: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1),
             },
         });
 
-        if (existingWorkout) {
-            // Wenn Daten vorhanden sind, aktualisiere sie durch Hinzufügen der neuen Werte
-            existingWorkout.workout += workout;
-            existingWorkout.minutes += minutes;
-            existingWorkout.calories += calories;
-        } else {
-            // Wenn keine Daten vorhanden sind, erstelle einen neuen Eintrag
-            existingWorkout = new Workout({
-                workout,
-                minutes,
-                calories,
-                date: currentDate, // Füge das aktuelle Datum hinzu
-            });
+        if (!workout) {
+            return res.status(404).json({ message: "Kein Workout für heute gefunden" });
         }
-
-        // Speichere das Workout (neu erstellten oder aktualisierten Eintrag)
-        await existingWorkout.save();
-
-        // Rufe die aktualisierten Daten erneut ab und sende sie als JSON-Antwort
-        const updatedWorkoutData = await Workout.findOne({
-            date: {
-                $gte: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
-                $lt: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1),
-            },
-        });
 
         res.status(200).json({
-            workout: updatedWorkoutData.workout,
-            calories: updatedWorkoutData.calories,
-            minutes: updatedWorkoutData.minutes,
+            calories: workout.calories,
+            workout: workout.workout,
+            minutes: workout.minutes,
         });
     } catch (error) {
-        console.log("Error saving workout: " + error);
-        res.status(500).json({ message: "Error saving workout" });
+        console.error("Fehler beim Abrufen des heutigen Workouts:", error);
+        res.status(500).json({ message: "Fehler beim Abrufen des Workouts" });
+    }
+});
+
+app.post('/update-todays-workout', async (req, res) => {
+    try {
+        const { workout, calories, minutes } = req.body;
+
+        // Überprüfen, ob das Workout größer als 0 ist
+        if (workout > 0) {
+            const currentDate = new Date();
+            const existingWorkout = await Workout.findOne({
+                date: {
+                    $gte: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
+                    $lt: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1),
+                },
+            });
+
+            if (existingWorkout) {
+                existingWorkout.workout = workout;
+                existingWorkout.calories = calories;
+                existingWorkout.minutes = minutes;
+                await existingWorkout.save();
+            } else {
+                const newWorkout = new Workout({
+                    workout,
+                    calories,
+                    minutes,
+                    date: currentDate,
+                });
+                await newWorkout.save();
+            }
+
+            res.status(200).json({ message: "Workout-Daten aktualisiert" });
+        } else {
+            res.status(400).json({ message: "Workout-Wert muss größer als 0 sein" });
+        }
+    } catch (error) {
+        console.error("Fehler beim Aktualisieren der Workout-Daten:", error);
+        res.status(500).json({ message: "Fehler beim Aktualisieren der Workout-Daten" });
     }
 });
 
 
-
-// Füge diese Zeilen zu deiner index.js-Datei hinzu
-
-// Endpoint zum Abrufen von Workout-Daten für den aktuellen Tag
-app.get('/get-workout', async (req, res) => {
+app.get('/get-workout-by-date/:date', async (req, res) => {
     try {
-        const currentDate = new Date();
+        const selectedDate = new Date(req.params.date);
 
-        // Suche nach Workout-Daten für den aktuellen Tag in der Datenbank
-        const workoutData = await Workout.findOne({
+        // Assuming you have a Workout model
+        const workout = await Workout.findOne({
             date: {
-                $gte: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
-                $lt: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1),
+                $gte: selectedDate,
+                $lt: new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + 1),
             },
         });
 
-        if (workoutData) {
-            // Wenn Daten vorhanden sind, sende sie als JSON-Antwort
-            res.status(200).json({
-                workout: workoutData.workout,
-                calories: workoutData.calories,
-                minutes: workoutData.minutes,
-            });
-        } else {
-            // Wenn keine Daten vorhanden sind, sende eine leere Antwort
-            res.status(200).json({});
+        if (!workout) {
+            return res.status(404).json({ message: "Kein Workout für ausgewähltes Datum gefunden" });
         }
+
+        res.status(200).json({
+            calories: workout.calories,
+            workout: workout.workout,
+            minutes: workout.minutes,
+        });
     } catch (error) {
-        console.log("Fehler beim Abrufen der Workout-Daten: " + error);
-        res.status(500).json({ message: "Fehler beim Abrufen der Workout-Daten" });
+        console.error("Fehler beim Abrufen des Workouts für ausgewähltes Datum:", error);
+        res.status(500).json({ message: "Fehler beim Abrufen des Workouts" });
     }
 });
 
+app.get('/get-workout-dates', async (req, res) => {
+    try {
+        // Abrufen aller einzigartigen Datumsangaben, an denen Workouts stattgefunden haben
+        const dates = await Workout.distinct('date');
+
+        // Formatieren der Datumsangaben für die Rückgabe (optional)
+        const formattedDates = dates.map(date => date.toISOString().split('T')[0]);
+
+        res.json(formattedDates);
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Workout-Daten:", error);
+        res.status(500).json({ message: "Fehler beim Abrufen der Workout-Datumsangaben" });
+    }
+});
 

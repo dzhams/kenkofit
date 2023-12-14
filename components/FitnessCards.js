@@ -11,7 +11,7 @@ const FitnessCards = () => {
     <View style={{marginTop: 35}}>
       {FitnessData.map((item, key) => (
         <Pressable
-        onPress={() => navigation.navigate("Workout",{
+        onPress={() => navigation.navigate("WorkoutScreen",{
           image:item.image,
           excersises:item.excersises,
           id:item.id,

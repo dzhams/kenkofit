@@ -8,7 +8,7 @@ import {
 import React, { useState, useContext, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { FitnessItems } from "../Context";
+import { FitnessItems } from "../components/Context";
 import { useFonts } from "expo-font";
 
 
@@ -39,7 +39,7 @@ const FitScreen = () => {
   console.log(completed, "completed excersise");
 
   const [fontsLoaded] = useFonts({
-    "Rajdhani-Bold": require("../assets/fonts/Rajdhani-Bold.ttf"),
+    "Rajdhani-Bold": require("../fonts/Rajdhani-Bold.ttf"),
   });
   if (!fontsLoaded) {
     return undefined;
@@ -47,7 +47,7 @@ const FitScreen = () => {
   return (
     <SafeAreaView>
       <Image
-        style={{ width: "100%", height: 350 }}
+        style={{marginTop: 15, width: "100%", height: 350 }}
         source={{ uri: current.image }}
       />
         <Ionicons
@@ -63,7 +63,7 @@ const FitScreen = () => {
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: 30,
-          fontSize: 40,
+          fontSize: 28,
           fontWeight: "bold",
           fontFamily: "Rajdhani-Bold",
           
@@ -86,14 +86,14 @@ const FitScreen = () => {
       {index + 1 >= excersise.length ? (
         <Pressable
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("Workout");
           }}
           style={{
-            backgroundColor: "blue",
+            backgroundColor: "black",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: 30,
-            borderRadius: 20,
+            borderRadius: 5,
             padding: 10,
             width: 150,
           }}
@@ -104,7 +104,6 @@ const FitScreen = () => {
               fontWeight: "bold",
               fontSize: 20,
               color: "white",
-             
             }}
           >
             DONE
@@ -123,11 +122,11 @@ const FitScreen = () => {
             }, 2000);
           }}
           style={{
-            backgroundColor: "blue",
+            backgroundColor: "black",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: 30,
-            borderRadius: 20,
+            borderRadius: 5,
             padding: 10,
             width: 150,
           }}
@@ -157,22 +156,20 @@ const FitScreen = () => {
         <Pressable
           disabled={index === 0}
           onPress={() => {
-            navigation.navigate("Rest");
-
-            setTimeout(() => {
               setIndex(index - 1);
-            }, 2000);
           }}
           style={{
-            backgroundColor: "red",
+            backgroundColor: "white",
             padding: 10,
-            borderRadius: 20,
+            borderRadius: 5,
             marginHorizontal: 20,
             width: 100,
+            borderWidth: 1,
+            borderColor: "#dededc"
           }}
         >
           <Text
-            style={{ color: "white", fontWeight: "bold", textAlign: "center" }}
+            style={{ color: "black", fontWeight: "bold", textAlign: "center" }}
           >
             PREV
           </Text>
@@ -180,19 +177,21 @@ const FitScreen = () => {
         {index + 1 >= excersise.length ? (
           <Pressable
             onPress={() => {
-              navigation.navigate("Home");
+              navigation.navigate("Workout");
             }}
             style={{
-              backgroundColor: "green",
+              backgroundColor: "white",
               padding: 10,
-              borderRadius: 20,
+              borderRadius: 5,
               marginHorizontal: 20,
               width: 100,
+              borderWidth: 1,
+              borderColor: "#dededc"
             }}
           >
             <Text
               style={{
-                color: "white",
+                color: "black",
                 fontWeight: "bold",
                 textAlign: "center",
               }}
@@ -203,23 +202,25 @@ const FitScreen = () => {
         ) : (
           <Pressable
             onPress={() => {
-              navigation.navigate("Rest");
+              // navigation.navigate("Rest");
 
-              setTimeout(() => {
+              // setTimeout(() => {
                 setIndex(index + 1);
-              }, 2000);
+              // }, 2000);
             }}
             style={{
-              backgroundColor: "green",
+              backgroundColor: "white",
               padding: 10,
-              borderRadius: 20,
+              borderRadius: 5,
               marginHorizontal: 20,
               width: 100,
+              borderWidth: 1,
+              borderColor: "#dededc"
             }}
           >
             <Text
               style={{
-                color: "white",
+                color: "black",
                 fontWeight: "bold",
                 textAlign: "center",
               }}

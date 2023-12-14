@@ -10,11 +10,10 @@ import {
 import React ,{useContext} from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import { FitnessItems } from "../Context";
+import { FitnessItems } from "../components/Context";
 import { AntDesign } from '@expo/vector-icons';
 const WorkOutScreen = () => {
   const route = useRoute();
-//   console.log(route.params);
   const navigation = useNavigation();
   const {
     completed,
@@ -50,7 +49,7 @@ const WorkOutScreen = () => {
             />
 
             <View style={{ marginLeft: 10 }}>
-              <Text style={{ fontSize: 20, fontFamily: "Rajdhani-Bold",width:170, }}>
+              <Text style={{ fontSize: 18, fontFamily: "Rajdhani-Bold",width:170, }}>
                 {item.name}
               </Text>
 

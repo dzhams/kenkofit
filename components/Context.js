@@ -13,7 +13,6 @@ const FitnessContext = ({ children }) => {
         completed,
         setCompleted,
         workout,
-        
         setWorkout,
         calories,
         setCalories,

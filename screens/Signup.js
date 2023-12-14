@@ -46,7 +46,7 @@ const Signup = ({ navigation }) => {
         };
 
         axios
-            .post('http://192.168.0.16:3000/register', user)
+            .post('http://10.169.125.212:3000/register', user)
             .then((response) => {
                 console.log(response);
                 Alert.alert("Registrierung erfolgreich");
@@ -67,6 +67,7 @@ const Signup = ({ navigation }) => {
                 <View style={{ marginVertical: 2 }}>
                     <AntDesign onPress={() => navigation.goBack()} name="back" size={26} color="black" style={{ marginTop: 15 }} />
                     <Text style={{
+                        marginTop: 10,
                         fontSize: 30,
                         color: COLORS.black,
                         fontFamily: "Rajdhani-Bold",

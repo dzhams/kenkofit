@@ -8,37 +8,37 @@ export default [
     excersises: [
       {
         id: "10",
-        image:"https://sworkit.com/wp-content/uploads/2020/06/sworkit-jumping-jack.gif",
+        image:"https://i.pinimg.com/originals/e0/40/a9/e040a9055c8641419237d642759bb747.gif",
         name: "JUMPING JACKS",
         sets:12,
       },
       {
           id:"11",
-          image:"https://freaktofit.com/wp-content/uploads/2020/05/incline-push-up.gif",
+          image:"https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/flexao-de-bracos-inclinada.gif",
           name:"INCLINE PUSH-UPS",
           sets:10,
       },
       {
           id:"12",
-          image:"https://media.self.com/photos/583c641ca8746f6e65a60c7e/master/w_1600%2Cc_limit/DIAMOND_PUSHUP_MOTIFIED.gif",
-          name:"INCLINED PUSH-UPS",
+          image:"https://www.fitliferegime.com/wp-content/uploads/2022/02/Diamond-Push-Up-Gif.gif",
+          name:"DIAMOND PUSH-UPS",
           sets:10,
       },
       {
           id:"13",
-          image:"https://cdn.prod.openfit.com/uploads/2020/03/10162714/wide-arm-push-up.gif",
+          image:"https://static.wixstatic.com/media/2edbed_416a8515d354441787abf2f537b65a53~mv2.gif",
           name:"WIDE ARM PUSH-UPS",
           sets:12,
       },
       {
           id:"14",
-          image:"https://www.yogajournal.com/wp-content/uploads/2021/12/Cobra.gif?width=730",
+          image:"https://www.docteur-fitness.com/wp-content/uploads/2022/08/bhujangasana-posture-du-cobra.gif",
           name:"COBRA STRETCH",
           sets:10,
       },
       {
           id:"15",
-          image:"https://www.vissco.com/wp-content/uploads/animation/sub/double-knee-to-chest-stretch.gif",
+          image:"https://fitnessprogramer.com/wp-content/uploads/2021/06/Above-Head-Chest-Stretch.gif",
           name:"CHEST STRETCH",
           sets:10,
       }
@@ -53,31 +53,31 @@ export default [
     excersises : [
       {
         id:"90",
-        image:"https://media1.popsugar-assets.com/files/thumbor/f2sbzQY1h1zqiGEV9Mhr1IAcFMU/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/03/13/796/n/1922729/19cf2a4428446429_EXAMPLE.crossjacks.gif",
+        image:"https://i.pinimg.com/originals/e0/40/a9/e040a9055c8641419237d642759bb747.gif",
         name:"JUMPING JACKS",
         sets:12,
       },
       {
         id:"91",
-        image:"https://i.pinimg.com/originals/18/27/be/1827be178c019b1dc6f8a8d8b4a7b0b8.gif",
+        image:"https://www.mundoboaforma.com.br/wp-content/uploads/2021/01/06301301-Mountain-Climber_Cardio_360-logo.gif",
         name:"MOUNTAIN CLIMBERS",
         sets:10,
       },
       {
         id:"92",
-        image:"https://i.pinimg.com/originals/f4/b0/f3/f4b0f3093fcadd64968e4c46d1767b50.gif",
+        image:"https://modusx.de/wp-content/uploads/2021/10/heel-touches.gif",
         name:"HEEL TOUCH",
         sets:20,
       },
       {
         id:"94",
-        image:"https://i.pinimg.com/originals/cf/b5/67/cfb5677a755fe7288b608a4fec6f09a0.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2021/04/Weighted-Front-Plank.gif",
         name:"PLANK",
         sets:10,
       },
       {
         id:"95",
-        image:"https://www.gymguider.com/wp-content/uploads/2017/10/straight-leg-raise.gif",
+        image:"https://modusx.de/wp-content/uploads/klassisches-beinheben-fuer-die-bauchmuskeln-mit-hantelbank.gif",
         name:"LEG RAISES",
         sets:14,
       }
@@ -92,44 +92,44 @@ export default [
     excersises:[
       {
         id:"70",
-        image:"https://post.healthline.com/wp-content/uploads/2020/06/400x400_How_to_do_Zac_Efrons_Baywatch_Workout_Dumbbell_Lateral_Raise.gif",
+        image:"https://www.inspireusafoundation.org/wp-content/uploads/2022/03/dumbbell-lateral-raise.gif",
         name:"ARM RAISES",
         sets:8,
       },
       {
         id:"71",
-        image:"https://thumbs.gfycat.com/CompleteZigzagFossa-max-1mb.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2021/02/Triceps-Dips.gif",
         name:"TRICEP DIPS",
         sets:10,
       },
       {
         id:"72",
-        image:"https://thumbs.gfycat.com/MisguidedAridAlaskanmalamute-max-1mb.gif",
-        name:"DIAMOND_PUSHUP",
+        image:"https://www.fitliferegime.com/wp-content/uploads/2022/02/Diamond-Push-Up-Gif.gif",
+        name:"DIAMOND PUSHUP",
         sets:10,
       },
       {
         id:"73",
-        image:"https://c.tenor.com/gI-8qCUEko8AAAAC/pushup.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2021/06/Push-Up-Plus.gif",
         name:"PUSH-UPS",
         sets:10,
       },
       {
         id:"74",
-        image:"https://i.pinimg.com/originals/8c/53/27/8c532774e4e1c524576bf1fb829ad895.gif",
+        image:"https://homeworkouts.org/wp-content/uploads/anim-dumbbell-bicep-curls.gif",
         name:"DUMBELL CURL",
         sets:11,
       
       },
       {
         id:"75",
-        image:"https://www.vissco.com/wp-content/uploads/animation/sub/inch-worm.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2022/01/Inchworm.gif",
         name:"INCH WORMS",
         sets:5,
       },
       {
         id:"76",
-        image:"https://c.tenor.com/jqwaOmRs-7gAAAAC/tricep-kick-back-tricep.gif",
+        image:"https://cdn-cccio.nitrocdn.com/sQAAylIpwgMYZgBLSXcMgCkUIbfIzHvb/assets/images/optimized/rev-b05b9eb/www.aleanlife.com/wp-content/uploads/2022/11/tricep-exercises-skullcrushers.gif",
         name:"TRICEP LIFT",
         sets:8,
       }
@@ -144,37 +144,31 @@ export default [
     excersises: [
       {
         id:"20",
-        image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
+        image:"https://cdn-cccio.nitrocdn.com/sQAAylIpwgMYZgBLSXcMgCkUIbfIzHvb/assets/images/optimized/rev-b05b9eb/www.aleanlife.com/wp-content/uploads/2020/12/decline-push-up-form.gif",
         name:"DECLINE PUSH-UPS",
         sets:9,
       },
       {
         id:"21",
-        image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2022/07/Modified-Hindu-Push-up.gif",
         name:"HINDU PUSH-UPS",
         sets:10,
       },
       {
         id:"22",
-        image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
+        image:"https://www.inspireusafoundation.org/wp-content/uploads/2022/12/cross-chest-shoulder-stretch.gif",
         name:"SHOULDER STRETCH",
         sets:5,
       },
       {
         id:"23",
-        image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
+        image:"https://www.docteur-fitness.com/wp-content/uploads/2022/08/bhujangasana-posture-du-cobra.gif",
         name:"COBRA STRETCH",
         sets:4,
       },
       {
-        id:"25",
-        image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-        name:"PUSH-UP & ROTATION",
-        sets:12,
-      },
-      {
         id:"26",
-        image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
+        image:"https://fitnessprogramer.com/wp-content/uploads/2021/10/Jack-Burpees.gif",
         name:"BURPEES",
         sets:10
       }

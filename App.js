@@ -2,18 +2,16 @@ import {  Text, Platform,  View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import Login from "./screens/Login";
 import Start from "./screens/Start";
 import Signup from "./screens/Signup";
-import Settings from "./screens/Settings";
 import Home from "./screens/Home";
 import FitScreen from "./screens/FitScreen";
 import RestScreen from "./screens/RestScreen";
 import WorkoutScreen from "./screens/WorkoutScreen";
-import { FitnessContext } from './Context';
-import StepCounter from './screens/StepCounter';
+import { FitnessContext } from './components/Context';
 import { useFonts } from "expo-font";
 import ActivityScreen from './screens/ActivityScreen';
 
@@ -28,7 +26,7 @@ function MyTabs() {
     <Tab.Navigator screenOptions={{
       tabBarShowLabel: false,
       tabBarStyle:{
-        backgroundColor:"rgba(0,0,0,0.8)",
+        backgroundColor:"rgba(0,0,0,0.9)",
         position: "absolute",
         bottom:0,
         left:0,
@@ -43,27 +41,27 @@ function MyTabs() {
     }
 }}>
     
-      <Tab.Screen name="Home" component={Home} 
+      <Tab.Screen name="Home" component={Start} 
       options={{
         headerShown: false,
         tabBarIcon: ({focused})=>{
           return (
             <View style={{alignItems: "center", justifyContent: "center"}}> 
-              <AntDesign name="home" size={24} color={focused ? "#B8860B": "white"} />
-              <Text style={{color: focused ? "#B8860B": "white", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Home</Text>
+              <AntDesign name="home" size={24} color={focused ? "white" : "#b0a077"} />
+              <Text style={{color: focused ? "white" : "#b0a077", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Home</Text>
         </View>
           )
         } 
       }}
       />
-      <Tab.Screen name="Konto" component={Start} 
+      <Tab.Screen name="Workout" component={Home} 
       options={{
         headerShown: false,
         tabBarIcon: ({focused})=>{
           return (
         <View style={{alignItems: "center", justifyContent: "center"}}>
-        <MaterialCommunityIcons name="account-outline" size={24} color={focused ? "#B8860B": "white"} />
-        <Text style={{color: focused ? "#B8860B": "white", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Konto</Text>
+        <MaterialIcons name="fitness-center" size={24} color={focused ?  "white" : "#b0a077"} />
+        <Text style={{color: focused ? "white" : "#b0a077", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Workout</Text>
         </View>
           )
           }  
@@ -76,21 +74,9 @@ function MyTabs() {
         tabBarIcon: ({focused})=>{
           return (
             <View style={{alignItems: "center", justifyContent: "center"}}> 
-              <AntDesign name="setting" size={24} color={focused ? "#B8860B": "white"} />
-              <Text style={{color: focused ? "#B8860B": "white", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Activity</Text>
-            </View>
-          )
-        } 
-      }}
-      />
-      <Tab.Screen name="Stepcounter" component={StepCounter}
-      options={{
-        headerTransparent: false,
-        tabBarIcon: ({focused})=>{
-          return (
-            <View style={{alignItems: "center", justifyContent: "center"}}> 
-              <AntDesign name="setting" size={24} color={focused ? "#B8860B": "white"} />
-              <Text style={{color: focused ? "#B8860B": "white", fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Stepcounter</Text>
+              <Feather name="activity" size={24} color={focused ? "white" : "#b0a077"} />
+              <Text style={{color: focused ? "white" : "#b0a077"
+              , fontSize: 12, fontFamily: "Rajdhani-Bold"}}>Activity</Text>
             </View>
           )
         } 
@@ -102,11 +88,12 @@ function MyTabs() {
 
 function App() {
   const [fontsLoaded] = useFonts({
-    "Rajdhani-Bold": require("./assets/fonts/Rajdhani-Bold.ttf"),
-    "Nordica": require("./assets/fonts/Nordica.otf"),
-    "Rajdhani-Regular": require("./assets/fonts/Rajdhani-Regular.ttf"),
-    "Rajdhani-Medium": require("./assets/fonts/Rajdhani-Medium.ttf"),
-    "Rajdhani-SemiBold": require("./assets/fonts/Rajdhani-SemiBold.ttf")
+    "Rajdhani-Bold": require("./fonts/Rajdhani-Bold.ttf"),
+    "Nordica": require("./fonts/Nordica.otf"),
+    "Rajdhani-Regular": require("./fonts/Rajdhani-Regular.ttf"),
+    "Rajdhani-Medium": require("./fonts/Rajdhani-Medium.ttf"),
+    "Rajdhani-SemiBold": require("./fonts/Rajdhani-SemiBold.ttf"),
+    "Rajdhani-Light": require("./fonts/Rajdhani-Light.ttf"),
   });
   
   if (!fontsLoaded) {
@@ -121,7 +108,7 @@ function App() {
         <Stack.Screen name="Start" component={Start} options={{headerShown: false }}/>
         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
         <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
-        <Stack.Screen name="Workout" component={WorkoutScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="WorkoutScreen" component={WorkoutScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Fit" component={FitScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Rest" component={RestScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Activity" component={ActivityScreen} options={{headerShown:false}}/>
